@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class LoginForm extends Component {
+class SignInForm extends Component {
 
     state = {
         account: {
@@ -41,4 +41,4 @@ class LoginForm extends Component {
     }
 }
 
-export default LoginForm;
+export default SignInForm;

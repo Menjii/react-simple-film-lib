@@ -20,6 +20,10 @@ const Navbar = () => {
                         <Link to="/login" className="nav-link" id="pills-home-tab" data-toggle="pill" role="tab"
                             aria-controls="pills-home" aria-selected="true">Login</Link>
                     </li>
+                    <li className="nav-item" role="presentation">
+                        <Link to="/signup" className="nav-link" id="pills-home-tab" data-toggle="pill" role="tab"
+                            aria-controls="pills-home" aria-selected="true">Registration</Link>
+                    </li>
                 </ul>
             </div>
         </nav>
