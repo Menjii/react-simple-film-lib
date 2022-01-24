@@ -8,6 +8,7 @@ import SignUpForm from "./components/signUpForm";
 import AddFilm from "./components/addFilm";
 import FilmDetails from "./components/filmDetails";
 
+
 function App() {
   return (
       <div className="container-fluid">
@@ -20,7 +21,7 @@ function App() {
                     <Route path="/films" element={<Films />} />
                     <Route path="/signup" element={<SignUpForm />} />
                     <Route path="/add" element={<AddFilm />} />
-                    <Route path="/details" element={<FilmDetails />} />
+                    <Route path="/details/:id" element={<FilmDetails />} />
                 </Routes>
             </div>
         </div>
