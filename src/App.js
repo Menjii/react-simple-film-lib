@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Routes } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import NavBar from "./components/navbar";
 import SignInForm from "./components/signInForm";
 import Home from "./components/home";
@@ -7,7 +7,7 @@ import Films from "./components/films";
 import SignUpForm from "./components/signUpForm";
 import AddFilm from "./components/addFilm";
 import FilmDetails from "./components/filmDetails";
-
+import { isExpired } from "react-jwt";
 
 function App() {
   return (
@@ -15,14 +15,21 @@ function App() {
         <NavBar />
         <div className="container">
             <div className="content">
-                <Routes>
-                    <Route path="/login" element={<SignInForm />} />
-                    <Route path="/" element={<Home />} />
-                    <Route path="/films" element={<Films />} />
-                    <Route path="/signup" element={<SignUpForm />} />
-                    <Route path="/add" element={<AddFilm />} />
-                    <Route path="/details/:id" element={<FilmDetails />} />
-                </Routes>
+                <Switch>
+                    <Route path="/login" component={SignInForm} />
+                    <Route path="/" exact component={Home} />
+                    <Route path="/films" component={Films} />
+                    <Route path="/signup" component={SignUpForm} />
+                    <Route path="/add"
+                      render={props => {
+                          if (isExpired(localStorage.getItem('token'))) {
+                              return <Redirect to="/" />;
+                          }
+                          return <AddFilm />;
+                      }}
+                     />
+                    <Route path="/details/:id" component={FilmDetails} />
+                </Switch>
             </div>
         </div>
       </div>

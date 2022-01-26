@@ -2,6 +2,7 @@ import React from "react";
 import FilmCard from "./filmCard";
 import { Link } from "react-router-dom";
 import { Component } from "react";
+import { isExpired } from "react-jwt";
 
 class Films extends Component {
 
@@ -27,6 +28,7 @@ class Films extends Component {
 
     render() {
     const { isLoaded, films } = this.state;
+    const isNotLoggedIn = isExpired(localStorage.getItem('token'));
 
     if (!isLoaded) {
         return <p>Loading...</p>;
@@ -34,9 +36,10 @@ class Films extends Component {
 
     return (
             <div className="container-fluid">
+              {!isNotLoggedIn &&
                 <Link to="/add">
                 <button type="button" className="btn btn-primary">Add film</button>
-                </Link>
+                </Link> }
                 <div className="row">
                 {films.reverse().map((film) => (
                     <FilmCard key={film.id} title={film.title} image={film.image} id={film.id} />

@@ -1,7 +1,6 @@
 import React from "react";
 import { isExpired, decodeToken } from "react-jwt";
 import { Link } from "react-router-dom";
-import SearchForm from "./searchForm";
 
 const Navbar = () => {
 
@@ -16,7 +15,6 @@ const Navbar = () => {
                                 aria-controls="pills-home" aria-selected="true">Filmweb</Link>
                 </div>
                 <ul className="nav nav-pills ml-auto" id="pills-tab" role="tablist">
-                    <SearchForm />
                     <li className="nav-item" role="presentation">
                         <Link to="/films" className="nav-link" id="pills-home-tab" data-toggle="pill" role="tab"
                             aria-controls="pills-home" aria-selected="true">Filmy</Link>
